@@ -9,7 +9,7 @@ find_library(LIB_STATGEN StatGen)
 find_library(LIB_ZSTD zstd)
 find_library(LIB_HTS hts)
 find_library(LIB_Z z)
-find_library(LIB_RMATH Rmath)
+find_library(LIB_R R)
 
 add_library(libraremetal
             libRareMetal/mvtnorm/randomF77.c
@@ -74,7 +74,7 @@ add_library(libraremetal
 
 set_target_properties(libraremetal PROPERTIES OUTPUT_NAME raremetal)
 target_include_directories(libraremetal PUBLIC libRareMetal/pdf libRareMetal/src)
-target_link_libraries(libraremetal ${LIB_STATGEN} ${LIB_HTS} ${CMAKE_THREAD_LIBS_INIT} ${LIB_Z} ${LIB_RMATH})
+target_link_libraries(libraremetal ${LIB_STATGEN} ${LIB_HTS} ${CMAKE_THREAD_LIBS_INIT} ${LIB_Z} ${LIB_R})
 
 add_executable(raremetal
 #               raremetal/src/Calculate_mvt_pvalue.h
