@@ -4,8 +4,8 @@ project(raremetal VERSION 4.15.1 LANGUAGES C CXX Fortran)
 set(CMAKE_CXX_STANDARD 11)
 
 find_package(Threads)
+find_package(savvy REQUIRED)
 find_library(LIB_STATGEN StatGen)
-find_library(LIB_SAVVY savvy)
 find_library(LIB_ZSTD zstd)
 find_library(LIB_HTS hts)
 find_library(LIB_Z z)
@@ -133,7 +133,7 @@ add_executable(raremetalworker
                raremetalworker/src/WritePDF.h)
 
 target_include_directories(raremetalworker PRIVATE otherLib/eigen-3.2.0)
-target_link_libraries(raremetalworker libraremetal ${LIB_SAVVY} ${LIB_ZSTD})
+target_link_libraries(raremetalworker libraremetal savvy ${LIB_ZSTD})
 target_compile_definitions(raremetalworker PRIVATE VERSION="${PROJECT_VERSION}")
 
 
